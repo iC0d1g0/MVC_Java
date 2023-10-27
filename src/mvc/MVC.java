@@ -4,6 +4,11 @@
  */
 package mvc;
 
+import controlador.Ctrl;
+import modelo.ConsultDB;
+import modelo.Modelo;
+import vista.login;
+
 /**
  *
  * @author adder
@@ -14,7 +19,15 @@ public class MVC {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        login log=new login();
+        Modelo mod=new Modelo();
+        ConsultDB db=new ConsultDB();
+        
+        Ctrl control=new Ctrl(db, mod, log);
+        log.setVisible(true);
+        control.init();
+        
+       
     }
     
 }
