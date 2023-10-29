@@ -61,7 +61,7 @@ public class Ctrl implements ActionListener {
             JOptionPane.showMessageDialog(null, "Error de conexion a base de datos!");
             return false;
               }else{
-             JOptionPane.showMessageDialog(null, "Conexion Restablecida");
+             //JOptionPane.showMessageDialog(null, "Conexion Restablecida");
              return true;
         }
        
@@ -77,7 +77,7 @@ public class Ctrl implements ActionListener {
 
     public boolean validateLogin(String user, String pass) {
         mod.setUsuario(user);
-        mod.setTabladb("usr");
+        mod.setTabladb("user");
         if (db.getBuscar(mod)) {
             if (mod.getPassword().equals(pass)) {
                 JOptionPane.showMessageDialog(null, "Login successfully!");

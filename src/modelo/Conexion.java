@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 
 public class Conexion {
-    private final String url="jdbc:mysql://localhost:3306/users";
+    private final String url="jdbc:mysql://localhost:3306/usuarios";
     private final String root="root";
     private final String pass="adderlis"; 
    

@@ -69,6 +69,7 @@ public class ConDBestudiante extends Conexion {
         try{
             pre=con.prepareStatement(sql);
             pre.setString(1, pro.getNombre());
+            pre.executeUpdate();
             return true;
         }catch(SQLException e){
             System.out.println(e);

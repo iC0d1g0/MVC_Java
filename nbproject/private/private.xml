@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/adder/Documents/NetBeansProjects/MVC/src/modelo/ConDBestudiante.java</file>
-            <file>file:/C:/Users/adder/Documents/NetBeansProjects/MVC/src/controlador/Ctrl.java</file>
-            <file>file:/C:/Users/adder/Documents/NetBeansProjects/MVC/src/mvc/MVC.java</file>
-            <file>file:/C:/Users/adder/Documents/NetBeansProjects/MVC/src/controlador/CtrlEstudiantes.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/modelo/Conexion.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/controlador/Ctrl.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/vista/login.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/mvc/MVC.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/vista/registrar.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/vista/procesando.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/vista/notas_estudiantes.java</file>
+            <file>file:/C:/Users/adder/OneDrive/Desktop/Adderlis/MVC_Java/src/controlador/CtrlEstudiantes.java</file>
         </group>
     </open-files>
 </project-private>

@@ -3,11 +3,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
 import modelo.ConDBestudiante;
 import modelo.ModeloStd;
 import vista.notas_estudiantes;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.event.TableModelListener;
 import mvc.MVC;
 import javax.swing.table.DefaultTableModel;
 import modelo.ConsultDB;
@@ -18,7 +21,7 @@ public class CtrlEstudiantes implements ActionListener{
     private ModeloStd moddb;
     private notas_estudiantes vista;
     private ConDBestudiante connn;
-    
+    private DefaultTableModel model=null;
     public CtrlEstudiantes( ModeloStd moddb, notas_estudiantes vista, ConDBestudiante conn){
         this.moddb=moddb;
         this.vista=vista;
@@ -28,9 +31,12 @@ public class CtrlEstudiantes implements ActionListener{
         this.vista.btn_buscar.addActionListener(this);
         this.vista.btn_eliminar.addActionListener(this);
         this.vista.btn_logout.addActionListener(this);
+        vista.tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         
-        //this.vista.tabla
-     
     }
     public void manageRS(){
         try{
@@ -73,13 +79,13 @@ public class CtrlEstudiantes implements ActionListener{
         vista.setVisible(true);
         manageRS();
     }
-        public boolean ValidaConex(){
+    public boolean ValidaConex(){
             if(!connn.getConnectionStatus()){
 
                 JOptionPane.showMessageDialog(null, "Error de conexion a base de datos!");
                 return false;
                   }else{
-                 JOptionPane.showMessageDialog(null, "Conexion Restablecida");
+                 //JOptionPane.showMessageDialog(null, "Conexion Restablecida");
                  return true;
             }
        
@@ -94,6 +100,21 @@ public class CtrlEstudiantes implements ActionListener{
                         manageRS();
             }
     }
+    public void tablaMouseClicked(MouseEvent e){
+        if(ValidaConex()) System.out.println("Pulsaste boton eliminar");
+             int selecion=this.vista.tabla.getSelectedRow();
+             
+             if(selecion<0){
+                 System.out.println("No elementos selecionado");
+             }
+             else{
+                  Object nombre=this.vista.tabla.getValueAt(selecion, 0);
+                  Object matricula=this.vista.tabla.getValueAt(selecion, 1);
+                  
+                  System.out.println(nombre+" "+matricula);
+                  System.out.println(selecion);
+             }
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this.vista.btnNew){
@@ -101,13 +122,33 @@ public class CtrlEstudiantes implements ActionListener{
           
             
         }
-         if(e.getSource()==this.vista.btn_buscar){
+        
+        if(e.getSource()==this.vista.btn_buscar){
               if(ValidaConex()) System.out.println("Pulsaste boton buscar");
             
+            }
+        
+        if(e.getSource()==model){
+            System.out.println("Alfin un evento");
         }
-          if(e.getSource()==this.vista.btn_eliminar){
+         
+        if(e.getSource()==this.vista.btn_eliminar){
              if(ValidaConex()) System.out.println("Pulsaste boton eliminar");
+             int selecion=this.vista.tabla.getSelectedRow();
              
+             if(selecion<0){
+                 System.out.println("No elementos selecionado");
+             }
+             else{
+                  Object nombre=this.vista.tabla.getValueAt(selecion, 0);
+                  Object matricula=this.vista.tabla.getValueAt(selecion, 1);
+                  moddb.setNombre(String.valueOf(nombre));
+                  if(connn.eliminar(moddb)) JOptionPane.showMessageDialog(null, "Eliminados");
+                  manageRS();
+                  System.out.println(nombre+" "+matricula);
+                  System.out.println(selecion);
+             }
+            
         }
            if(e.getSource()==this.vista.btn_logout){
                     login log=new login();

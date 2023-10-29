@@ -46,7 +46,7 @@ public class ConsultDB extends Conexion{
     public boolean setNewuser(Modelo pro){
         PreparedStatement pre=null;
         Connection con=connect();
-        String insertar="INSERT INTO usr( name,password,usuario)VALUES(?,?,?)";
+        String insertar="INSERT INTO user( name,password,usuario)VALUES(?,?,?)";
         try{
             pre=con.prepareStatement(insertar);
             pre.setString(1, pro.getNombre());
