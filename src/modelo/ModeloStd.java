@@ -8,6 +8,15 @@ public class ModeloStd {
     private String usuarioauth;
     private String matricula;
     private String nombre;
+    private String datos;
+
+    public String getDatos() {
+        return datos;
+    }
+
+    public void setDatos(String datos) {
+        this.datos = datos;
+    }
 
     public String getUsuarioauth() {
         return usuarioauth;

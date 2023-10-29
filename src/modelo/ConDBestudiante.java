@@ -33,17 +33,39 @@ public class ConDBestudiante extends Conexion {
         
         
     }
-    public boolean getBuscar(ModeloStd pro){
+    public ResultSet getBuscartodo(ModeloStd pro){
+        //Este metodo permite leer todo lo que esta en la base de datos, 
+        //debuelve un objecto de tipo ResultSet para luego ser admnistrado por el controlador. 
+        
+        Connection con=connect();
+        Statement st=null;
+        ResultSet rs=null;
+        String base=pro.getUsuarioauth();
+        String sql="SELECT * FROM "+pro.getUsuarioauth()+" WHERE name LIKE '"+pro.getDatos()+"%' OR matricula LIKE '"+pro.getDatos()+"%';";
+               
+        try{
+            
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = st.executeQuery(sql);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConDBestudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
+    public boolean getBuscarnombre(ModeloStd pro){
         Connection con=connect();
         PreparedStatement pre=null;
-        String sql="SELECT * FROM "+pro.getUsuarioauth()+" where name=?";
+       String sql="SELECT * FROM "+pro.getUsuarioauth()+" where name=?";
         try{
             pre=con.prepareStatement(sql);
             pre.setString(1,pro.getNombre());
+         
+            
             pre.executeQuery();
             
             ResultSet rs=pre.getResultSet();
-            if(rs.next()){
+             while(rs.next()){
                 pro.setNombre(rs.getString("name"));
                 pro.setMatricula(rs.getString("matricula"));
                 
@@ -106,11 +128,12 @@ public class ConDBestudiante extends Conexion {
     public boolean setUpdate(ModeloStd pro){
         Connection con=connect();
         PreparedStatement pre=null;
-        String sql="UPDATE "+pro.getUsuarioauth()+" SET name = ?, matricula=? where nombre=?";
+        String sql="UPDATE "+pro.getUsuarioauth()+" SET name = ?, matricula=? where name=?";
         try{
             pre=con.prepareStatement(sql);
             pre.setString(1, pro.getNombre());
             pre.setString(2, pro.getMatricula());
+            pre.setString(3, pro.getDatos());
             pre.execute();
             
             return true;

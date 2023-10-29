@@ -243,7 +243,7 @@ public class notas_estudiantes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tabla;
-    private javax.swing.JTextField txt_Buscar;
+    public javax.swing.JTextField txt_Buscar;
     public javax.swing.JTextField txt_matricula;
     public javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
