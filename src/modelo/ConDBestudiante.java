@@ -121,6 +121,7 @@ public class ConDBestudiante extends Conexion {
             rs = st.executeQuery(sql);
             
         } catch (SQLException ex) {
+            
             Logger.getLogger(ConDBestudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rs;

@@ -183,6 +183,7 @@ public class CtrlEstudiantes implements ActionListener {
 
         ResultSet rs = connn.getBuscartodo(moddb);
         manageRS(rs);
+        limpiarEntradas(new JTextField []{vista.txt_matricula, vista.txt_nombre});
 
     }
     void actionBtnLogout(){

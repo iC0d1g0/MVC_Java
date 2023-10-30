@@ -15,9 +15,7 @@ import vista.login;
  */
 public class MVC {
 
-    /**
-     * @param args the command line arguments
-     */
+ 
     public static void main(String[] args) {
         login log=new login();
         Modelo mod=new Modelo();

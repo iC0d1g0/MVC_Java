@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import modelo.ConDBestudiante;
+import modelo.Conexion;
+
 import modelo.ConsultDB;
 import modelo.Modelo;
 import modelo.ModeloStd;
@@ -58,7 +60,10 @@ public class Ctrl implements ActionListener {
     }
     public boolean ValidaConex(){
         if(!db.getConnectionStatus()){
-            JOptionPane.showMessageDialog(null, "Error de conexion a base de datos!");
+            
+            
+            JOptionPane.showMessageDialog(null, "Listo!");
+            //JOptionPane.showMessageDialog(null, "!");
             return false;
               }else{
              //JOptionPane.showMessageDialog(null, "Conexion Restablecida");
@@ -96,7 +101,7 @@ public class Ctrl implements ActionListener {
 
     public boolean validateUser(String user) {
         mod.setUsuario(user);
-        mod.setTabladb("usr");
+        mod.setTabladb("user");
         if (db.getBuscar(mod)) {
             JOptionPane.showMessageDialog(null, "Usurio invalido, prueba otro usuario");
             return false;
