@@ -223,7 +223,8 @@ public class CtrlEstudiantes implements ActionListener {
 
             
         if (e.getSource() == this.vista.btn_logout) {
-               if(ValidaConex()) actionBtnLogout();
+            
+               actionBtnLogout();
         
             }
 

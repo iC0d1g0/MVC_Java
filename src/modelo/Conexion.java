@@ -54,7 +54,12 @@ public class Conexion {
             return false;
         }finally{
             try{
-                 con.close();
+                if(con !=null){
+                    con.close();
+                }else{
+                    System.out.println("No need to close");
+                } 
+                
             }catch(SQLException ej){
                 System.out.println("error al cerrar conexion");                
             }
@@ -66,17 +71,22 @@ public class Conexion {
     public Connection connect(){
        
             Connection con=null;
-             pass=Conexion.loadPassword();
+             
             try{
+                pass=Conexion.loadPassword();
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con=DriverManager.getConnection(url+database,root,pass);
 
 
             }catch(SQLException e){
-                System.out.println(e.getMessage());
-                if(adminDatabase()) connect();
+                System.out.println(e);
+                if(adminDatabase()){
+                    connect();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Si en este punto hay error, es por que la conexion esta desabilitada o no tienes instalado mysQL. Error 402");
+                }
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             }
             return con;
         
@@ -90,7 +100,7 @@ public class Conexion {
                 con.close();
                 
             } catch (SQLException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             }
            return true;
         

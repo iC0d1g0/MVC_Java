@@ -62,7 +62,7 @@ public class Ctrl implements ActionListener {
         if(!db.getConnectionStatus()){
             
             
-            JOptionPane.showMessageDialog(null, "Listo!");
+            JOptionPane.showMessageDialog(null, "Vuelve a intentar....! \n reconectando...");
             //JOptionPane.showMessageDialog(null, "!");
             return false;
               }else{
