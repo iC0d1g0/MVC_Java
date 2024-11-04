@@ -50,4 +50,4 @@ El controlador maneja la lógica de flujo de la aplicación, comunicándose entr
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/tu-usuario/MVC_Java.git
+   git clone https://github.com/iC0d1g0/MVC_Java
